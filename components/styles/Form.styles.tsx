@@ -53,4 +53,11 @@ export const FormContainer = styled.div`
     margin: 30px 0 0;
     padding: 0 10px 0 0;
   }
+
+  @media (min-width: 768px) {
+    width: 240px;
+    height: 32px;
+    float: right;
+    margin: 45px 10px 0 0;
+  }
 `

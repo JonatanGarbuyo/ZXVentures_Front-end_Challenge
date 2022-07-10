@@ -11,4 +11,10 @@ export const CartButtonContainer = styled.div`
     margin: 30px 0 0;
     padding: 0 0 0 10px;
   }
+
+  @media (min-width: 768px) {
+    width: 170px;
+    float: right;
+    margin: 45px 0 0;
+  }
 `
