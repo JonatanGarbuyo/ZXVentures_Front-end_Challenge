@@ -19,9 +19,9 @@ const Index: NextPage = () => {
 
       {/* navigation */}
 
-      <main></main>
+      <main>main</main>
 
-      <footer></footer>
+      <footer>footer</footer>
     </Container>
   )
 }
