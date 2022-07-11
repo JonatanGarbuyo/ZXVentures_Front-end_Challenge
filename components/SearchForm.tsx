@@ -1,12 +1,18 @@
+import { FaSearch } from 'react-icons/fa'
+
 import { FormContainer } from './styles/Form.styles'
 
 export default function SearchForm() {
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
+
   return (
     <FormContainer>
-      <form action="/search" method="get" role="search">
+      <form onSubmit={handleSubmit}>
         <input id="search-input" name="q" type="text" placeholder="Buscar..." />
         <button id="search-submit" type="submit">
-          P
+          <FaSearch />
         </button>
       </form>
     </FormContainer>

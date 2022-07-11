@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const FormContainer = styled.div`
-  color: #aaa;
+  color: var(--color-brand-accent-pebble);
   width: 100%;
   float: none;
   margin: 15px 0 0;
@@ -23,7 +23,6 @@ export const FormContainer = styled.div`
     padding: 6px 12px;
     border: none;
     font: 12px Open Sans;
-    color: #aaa;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -34,6 +33,7 @@ export const FormContainer = styled.div`
   }
 
   button {
+    color: var(--color-brand-accent-pebble);
     width: 30px;
     height: 30px;
     margin: 0 -32px 0 0;

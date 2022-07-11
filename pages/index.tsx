@@ -13,7 +13,7 @@ const Index: NextPage = () => {
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
-      <main>main</main>
+      <main style={{ flexGrow: 1 }}>main</main>
     </>
   )
 }
