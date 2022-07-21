@@ -7,6 +7,7 @@ import {
 } from './styles/footer/Copyright.styled'
 import { FormContainer } from './styles/Form.styles'
 import { Heading } from './styles/Heading.styled'
+import { List, ListItem } from './styles/List.styled'
 
 export default function Footer() {
   function handleSubmit(e) {
@@ -18,35 +19,35 @@ export default function Footer() {
       <StyledFooter>
         <FooterElement>
           <Heading as="h3">Siguenos</Heading>
-          <ul>
-            <li>
+          <List>
+            <ListItem>
               <a href="#">Facebook</a>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <a href="#">Instagram</a>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <a href="#">Pinterest</a>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <a href="#">Twitter</a>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <a href="#">Youtube</a>
-            </li>
-          </ul>
+            </ListItem>
+          </List>
         </FooterElement>
 
         <FooterElement>
           <Heading as="h3">Contacto</Heading>
-          <ul>
-            <li>
+          <List>
+            <ListItem>
               <FaMapMarkerAlt /> <span>1234 Calle Falsa, Glasgow D04 89GR</span>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <FaPhoneAlt /> <span>54(11) 4321-1234</span>
-            </li>
-          </ul>
+            </ListItem>
+          </List>
         </FooterElement>
 
         <FooterElement>

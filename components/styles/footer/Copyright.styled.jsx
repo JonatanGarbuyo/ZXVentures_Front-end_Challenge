@@ -4,23 +4,6 @@ export const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
 
-  ul {
-    padding-left: 0.5rem;
-    color: var(--color-brand-accent-pebble);
-    list-style: none;
-    margin: 0;
-  }
-
-  li {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    line-height: 1.8rem;
-    text-transform: uppercase;
-    padding: 1rem 0 0 0;
-    font-size: 1.2rem;
-  }
-
   a {
     line-height: 1.5rem;
     font-size: 1rem;
