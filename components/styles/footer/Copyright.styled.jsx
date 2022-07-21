@@ -4,14 +4,6 @@ export const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
 
-  h3 {
-    margin: 0px;
-    padding: 30px 0 0;
-    font-weight: 700;
-    font-size: 2rem;
-    color: var(--color-brand-black);
-  }
-
   ul {
     padding-left: 0.5rem;
     color: var(--color-brand-accent-pebble);

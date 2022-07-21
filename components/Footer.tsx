@@ -6,6 +6,7 @@ import {
   FooterElement,
 } from './styles/footer/Copyright.styled'
 import { FormContainer } from './styles/Form.styles'
+import { Heading } from './styles/Heading.styled'
 
 export default function Footer() {
   function handleSubmit(e) {
@@ -16,7 +17,7 @@ export default function Footer() {
     <>
       <StyledFooter>
         <FooterElement>
-          <h3>Siguenos</h3>
+          <Heading as="h3">Siguenos</Heading>
           <ul>
             <li>
               <a href="#">Facebook</a>
@@ -37,7 +38,7 @@ export default function Footer() {
         </FooterElement>
 
         <FooterElement>
-          <h3>Contacto</h3>
+          <Heading as="h3">Contacto</Heading>
           <ul>
             <li>
               <FaMapMarkerAlt /> <span>1234 Calle Falsa, Glasgow D04 89GR</span>
@@ -49,7 +50,7 @@ export default function Footer() {
         </FooterElement>
 
         <FooterElement>
-          <h3>Suscribete</h3>
+          <Heading as="h3">Suscribete</Heading>
           <FormContainer id="contact_form">
             <form onSubmit={handleSubmit} acceptCharset="UTF-8">
               <input type="hidden" name="form_type" value="customer" />
