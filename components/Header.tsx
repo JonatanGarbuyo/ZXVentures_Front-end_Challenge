@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 import {
   HeaderFirstRow,
   HeaderLogo,
@@ -11,11 +13,15 @@ import { Option } from './styles/Select.styled'
 import Select from './Select'
 
 export default function Header() {
+  function handleSelect(e: ChangeEvent<HTMLSelectElement>) {
+    console.log(e.target.value)
+  }
+
   return (
     <header>
       <HeaderFirstRow>
         <span>Bienvenido a nuestra tienda en linea!</span>
-        <Select>
+        <Select onChange={handleSelect}>
           <Option value="ars">ARS</Option>
         </Select>
       </HeaderFirstRow>
