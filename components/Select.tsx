@@ -1,11 +1,19 @@
+import { ChangeEvent } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
 import { StyledSelect, SelectWrapper } from './styles/Select.styled'
 
-export default function Select({ children }) {
+interface Props {
+  children: JSX.Element | JSX.Element[]
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void
+}
+
+export default function Select({ children, onChange }: Props) {
   return (
     <SelectWrapper>
-      <StyledSelect width="100%">{children}</StyledSelect>
+      <StyledSelect width="100%" onChange={onChange}>
+        {children}
+      </StyledSelect>
       <FaChevronDown
         style={{ position: 'absolute', right: '10px', top: '10px', zIndex: -1 }}
       />
