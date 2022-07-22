@@ -7,15 +7,16 @@ import {
 import { CartButtonContainer } from './styles/CartButtonContainer.styled'
 import { Button } from './styles/Button.styled'
 import SearchForm from './SearchForm'
+import { Option, Select } from './styles/Select.styled'
 
 export default function Header() {
   return (
     <header>
       <HeaderFirstRow>
         <span>Bienvenido a nuestra tienda en linea!</span>
-        <select name="currency">
-          <option value="ars">ARS</option>
-        </select>
+        <Select>
+          <Option value="ars">ARS</Option>
+        </Select>
       </HeaderFirstRow>
       <HeaderSecondRow>
         <HeaderLogo>
@@ -24,7 +25,9 @@ export default function Header() {
         </HeaderLogo>
         <div>
           <CartButtonContainer>
-            <Button>My carrito: {3} item(s)</Button>
+            <Button width="100%" backgroundColor="black" color="white">
+              My carrito: {3} item(s)
+            </Button>
           </CartButtonContainer>
 
           <SearchForm />
