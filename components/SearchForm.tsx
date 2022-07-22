@@ -17,7 +17,7 @@ export default function SearchForm() {
           style={{ position: 'relative' }}
         >
           <FaSearch
-            style={{ position: 'absolute', right: '10px', top: '10px' }}
+            style={{ position: 'absolute', right: '10px', top: '8px' }}
           />
         </button>
       </form>
