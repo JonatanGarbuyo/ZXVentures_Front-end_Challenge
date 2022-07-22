@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 import {
   HeaderFirstRow,
   HeaderLogo,
@@ -7,15 +9,21 @@ import {
 import { CartButtonContainer } from './styles/CartButtonContainer.styled'
 import { Button } from './styles/Button.styled'
 import SearchForm from './SearchForm'
+import { Option } from './styles/Select.styled'
+import Select from './Select'
 
 export default function Header() {
+  function handleSelect(e: ChangeEvent<HTMLSelectElement>) {
+    console.log(e.target.value)
+  }
+
   return (
     <header>
       <HeaderFirstRow>
         <span>Bienvenido a nuestra tienda en linea!</span>
-        <select name="currency">
-          <option value="ars">ARS</option>
-        </select>
+        <Select onChange={handleSelect}>
+          <Option value="ars">ARS</Option>
+        </Select>
       </HeaderFirstRow>
       <HeaderSecondRow>
         <HeaderLogo>
@@ -24,7 +32,9 @@ export default function Header() {
         </HeaderLogo>
         <div>
           <CartButtonContainer>
-            <Button>My carrito: {3} item(s)</Button>
+            <Button width="100%" backgroundColor="black" color="white">
+              My carrito: {3} item(s)
+            </Button>
           </CartButtonContainer>
 
           <SearchForm />

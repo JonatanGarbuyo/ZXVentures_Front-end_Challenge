@@ -7,20 +7,6 @@ export const HeaderFirstRow = styled.div`
   align-items: center;
   font-size: 10px;
   text-transform: uppercase;
-
-  select {
-    padding: 0 1rem;
-    color: #666;
-    font-size: 12px;
-    height: 28px;
-    border: 1px solid #e3e3e3;
-    -webkit-border-radius: 14px;
-    -moz-border-radius: 14px;
-    border-radius: 14px;
-    background: transparent;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 `
 
 export const HeaderSecondRow = styled.div`
