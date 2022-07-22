@@ -11,8 +11,14 @@ export default function SearchForm() {
     <FormContainer>
       <form onSubmit={handleSubmit}>
         <input id="search-input" name="q" type="text" placeholder="Buscar..." />
-        <button id="search-submit" type="submit">
-          <FaSearch />
+        <button
+          id="search-submit"
+          type="submit"
+          style={{ position: 'relative' }}
+        >
+          <FaSearch
+            style={{ position: 'absolute', right: '10px', top: '10px' }}
+          />
         </button>
       </form>
     </FormContainer>
