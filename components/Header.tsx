@@ -7,7 +7,8 @@ import {
 import { CartButtonContainer } from './styles/CartButtonContainer.styled'
 import { Button } from './styles/Button.styled'
 import SearchForm from './SearchForm'
-import { Option, Select } from './styles/Select.styled'
+import { Option } from './styles/Select.styled'
+import Select from './Select'
 
 export default function Header() {
   return (

@@ -4,8 +4,14 @@ interface SelectProps {
   width?: string
 }
 
-export const Select = styled.select`
-  padding: 0 2rem 0 1rem;
+export const SelectWrapper = styled.div`
+  position: relative;
+  max-width: 500px;
+`
+
+export const StyledSelect = styled.select`
+  appearance: none;
+  padding: 0 3rem 0 1rem;
   color: var(--color-brand-accent-pebble);
   font-size: 1.2rem;
   height: 28px;
@@ -16,7 +22,6 @@ export const Select = styled.select`
   white-space: nowrap;
   width: ${({ width }: SelectProps) => width};
   text-transform: capitalize;
-  max-width: 500px;
 `
 
 export const Option = styled.option`
