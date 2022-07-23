@@ -18,7 +18,7 @@ export default function Footer() {
     <>
       <StyledFooter>
         <FooterElement>
-          <Heading as="h3">Siguenos</Heading>
+          <Heading as="h2">Siguenos</Heading>
           <List>
             <ListItem>
               <a href="#">Facebook</a>
@@ -39,7 +39,7 @@ export default function Footer() {
         </FooterElement>
 
         <FooterElement>
-          <Heading as="h3">Contacto</Heading>
+          <Heading as="h2">Contacto</Heading>
           <List>
             <ListItem>
               <FaMapMarkerAlt /> <span>1234 Calle Falsa, Glasgow D04 89GR</span>
@@ -51,7 +51,7 @@ export default function Footer() {
         </FooterElement>
 
         <FooterElement>
-          <Heading as="h3">Suscribete</Heading>
+          <Heading as="h2">Suscribete</Heading>
           <FormContainer id="contact_form">
             <form onSubmit={handleSubmit} acceptCharset="UTF-8">
               <input type="hidden" name="form_type" value="customer" />
@@ -83,9 +83,8 @@ export default function Footer() {
       </StyledFooter>
 
       <Copyright>
+        <p>© 2022 Drinkstore +. All Rights Reserved.</p>
         <p>
-          © 2022 Drinkstore +. All Rights Reserved.
-          <br />
           Design by <a href="//templatemonster.com">TemplateMonster.com</a>{' '}
           <a href="https://vercel.com">Powered by Vercel</a>.
         </p>

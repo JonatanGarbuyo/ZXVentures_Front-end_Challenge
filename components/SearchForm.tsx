@@ -12,6 +12,7 @@ export default function SearchForm() {
       <form onSubmit={handleSubmit}>
         <input id="search-input" name="q" type="text" placeholder="Buscar..." />
         <button
+          aria-label="search button"
           id="search-submit"
           type="submit"
           style={{ position: 'relative' }}

@@ -32,7 +32,12 @@ export default function Header() {
         </HeaderLogo>
         <div>
           <CartButtonContainer>
-            <Button width="100%" backgroundColor="black" color="white">
+            <Button
+              width="100%"
+              backgroundColor="black"
+              color="white"
+              aria-label="My cart button"
+            >
               My carrito: {3} item(s)
             </Button>
           </CartButtonContainer>

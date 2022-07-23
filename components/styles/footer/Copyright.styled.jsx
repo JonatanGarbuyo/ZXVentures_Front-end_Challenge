@@ -13,7 +13,7 @@ export const StyledFooter = styled.footer`
     width: 15px;
     margin: 0 20px 0 0;
     font-size: 20px;
-    color: var(--color-brand-accent-pebble);
+    color: var(--color-brand-gray);
   }
 
   span {

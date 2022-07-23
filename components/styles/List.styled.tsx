@@ -5,7 +5,7 @@ interface ListProps {
 }
 
 export const List = styled.ul`
-  color: var(--color-brand-accent-pebble);
+  color: var(--color-brand-gray);
   display: flex;
   flex-direction: ${({ direction }: ListProps) => direction || 'column'};
   gap: 1rem;

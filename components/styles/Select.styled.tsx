@@ -12,10 +12,10 @@ export const SelectWrapper = styled.div`
 export const StyledSelect = styled.select`
   appearance: none;
   padding: 0 3rem 0 1rem;
-  color: var(--color-brand-accent-pebble);
+  color: var(--color-brand-gray);
   font-size: 1.2rem;
   height: 28px;
-  border: 1px solid var(--color-brand-accent-pebble);
+  border: 1px solid var(--color-brand-gray);
   border-radius: 14px;
   background: transparent;
   text-overflow: ellipsis;
