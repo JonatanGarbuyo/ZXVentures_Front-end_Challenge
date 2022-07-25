@@ -2,30 +2,28 @@ import styled from 'styled-components'
 
 interface ListProps {
   width?: string
-  color?: string
-  backgroundColor?: string
+  color?: 'black' | 'white'
   radius?: string
   border?: string
   p?: string
 }
 
 export const Button = styled.button`
-  border: ${({ border }: ListProps) => border || '1px solid'};
-  text-align: left;
-  width: ${({ width }: ListProps) => width};
-  color: ${({ color }: ListProps) => 'var(--color-brand-' + color + ')'};
-  background-color: ${({ backgroundColor }: ListProps) =>
-    'var(--color-brand-' + backgroundColor + ')'};
-  padding: ${({ p }: ListProps) => p || '0 1rem'};
-  line-height: 3rem;
   border-radius: ${({ radius }: ListProps) => radius || '16px'};
-  transition: 0.2s ease-in-out;
-  cursor: pointer;
+  border: none;
+  background: linear-gradient(
+    to bottom,
+    var(--color-brand-white) 0%,
+    #fff 100%
+  );
+  box-shadow: 0 1px #00000026, inset 0 0 #0000;
+  color: var(--color-brand-black);
 
-  &:hover {
-    color: ${({ backgroundColor }: ListProps) =>
-      'var(--color-brand-' + backgroundColor + ')'};
-    background-color: ${({ color }: ListProps) =>
-      'var(--color-brand-' + color + ')'};
-  }
+  cursor: pointer;
+  line-height: 3rem;
+  padding: ${({ p }: ListProps) => p || '0 1rem'};
+  text-align: left;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  width: ${({ width }: ListProps) => width};
 `

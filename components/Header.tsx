@@ -7,10 +7,10 @@ import {
   HeaderSecondRow,
 } from './styles/Header.styled'
 import { CartButtonContainer } from './styles/CartButtonContainer.styled'
-import { Button } from './styles/Button.styled'
 import SearchForm from './SearchForm'
 import { Option } from './styles/Select.styled'
 import Select from './Select'
+import { CartButton } from './styles/CartButton.styled'
 
 export default function Header() {
   function handleSelect(e: ChangeEvent<HTMLSelectElement>) {
@@ -32,14 +32,9 @@ export default function Header() {
         </HeaderLogo>
         <div>
           <CartButtonContainer>
-            <Button
-              width="100%"
-              backgroundColor="black"
-              color="white"
-              aria-label="My cart button"
-            >
+            <CartButton width="100%" color="white" aria-label="My cart button">
               My carrito: {3} item(s)
-            </Button>
+            </CartButton>
           </CartButtonContainer>
 
           <SearchForm />
