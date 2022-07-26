@@ -6,16 +6,23 @@ interface SelectProps {
 
 export const SelectWrapper = styled.div`
   position: relative;
-  max-width: 500px;
+
+  @media (min-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-right: 0;
+  }
 `
 
 export const StyledSelect = styled.select`
   appearance: none;
   padding: 0 3rem 0 1rem;
-  color: var(--color-brand-accent-pebble);
+  color: var(--color-brand-gray);
   font-size: 1.2rem;
   height: 28px;
-  border: 1px solid var(--color-brand-accent-pebble);
+  border: 1px solid var(--color-brand-gray);
   border-radius: 14px;
   background: transparent;
   text-overflow: ellipsis;
