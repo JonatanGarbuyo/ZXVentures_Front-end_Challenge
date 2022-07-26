@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
 
   a {
     line-height: 1.5rem;

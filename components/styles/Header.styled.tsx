@@ -37,6 +37,12 @@ export const HeaderLogo = styled.div`
     color: #666;
     text-transform: uppercase;
   }
+
+  @media (min-width: 1024px) {
+    span {
+      text-align: left;
+    }
+  }
 `
 
 export const HeaderLogin = styled.ul`
