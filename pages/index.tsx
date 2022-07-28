@@ -9,6 +9,8 @@ import { ProductsContent } from '../components/styles/ProductsContent.styled'
 import { ProductsHeader } from '../components/styles/ProductsHeader.styled'
 import { ProductItem } from '../types'
 import { ProductsList } from '../components/styles/ProductsList.styled'
+import Recomended from '../components/Recomended'
+import { Main } from '../components/styles/Main.styled'
 
 const categories = [
   'todos',
@@ -482,6 +484,10 @@ const products: ProductItem[] = [
   },
 ]
 
+const recomendedProducts = products.filter((product) =>
+  product.categories?.includes('mas vendidos')
+)
+
 const Index: NextPage = () => {
   function handleSelectCategory(e: ChangeEvent<HTMLSelectElement>) {
     console.log(e.target.value)
@@ -498,11 +504,11 @@ const Index: NextPage = () => {
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
-      <main>
-        <ProductsHeader>
-          <Heading>Productos</Heading>
-        </ProductsHeader>
+      <Main>
         <ProductsContent>
+          <ProductsHeader>
+            <Heading>Productos</Heading>
+          </ProductsHeader>
           <ProductsFilter
             categories={categories}
             onChange={handleSelectCategory}
@@ -517,7 +523,8 @@ const Index: NextPage = () => {
             // <Pagination />
           }
         </ProductsContent>
-      </main>
+        <Recomended recomendedProducts={recomendedProducts} />
+      </Main>
     </>
   )
 }
