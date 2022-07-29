@@ -3,16 +3,17 @@ import Image from 'next/image'
 
 import { ProductItem } from '../types'
 
-import { CardContainer } from './styles/ProductCard/CardContainer.styled'
-import { ImageContainer } from './styles/ImageContainer.styled'
-import { CardHeading } from './styles/ProductCard/CardHeading.styled'
 import { CardButton } from './styles/ProductCard/CardButton.styled'
+import { CardContainer } from './styles/ProductCard/CardContainer.styled'
+import { CardHeading } from './styles/ProductCard/CardHeading.styled'
+import { ImageContainer } from './styles/ImageContainer.styled'
 
 interface Props {
   product: ProductItem
+  imageSize?: 'small'
 }
 
-export default function ProductCard({ product: p }: Props) {
+export default function ProductCard({ product: p, imageSize }: Props) {
   const [src, setSrc] = useState(p.image_url)
 
   const handleClick = (productId) => {
@@ -21,16 +22,19 @@ export default function ProductCard({ product: p }: Props) {
 
   return (
     <CardContainer>
-      <ImageContainer as="a" href="#">
-        <Image
-          src={src}
-          onError={() => setSrc('/no-photo.png')}
-          width={100}
-          height={100}
-          alt={p.description}
-          layout="responsive"
-        />
-      </ImageContainer>
+      <a href="#">
+        <ImageContainer size={imageSize}>
+          <Image
+            src={src}
+            onError={() => setSrc('/no-photo.png')}
+            width={100}
+            height={100}
+            alt={p.description}
+            layout="responsive"
+            sizes="30vw"
+          />
+        </ImageContainer>
+      </a>
 
       <div>
         <a href="#">
