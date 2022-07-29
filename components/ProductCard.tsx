@@ -2,10 +2,11 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 import { ProductItem } from '../types'
-import { CardContainer } from '../components/styles/productCard/CardContainer.styled'
-import { ImageContainer } from '../components/styles/ImageContainer.styled'
-import { CardHeading } from '../components/styles/productCard/CardHeading.styled'
-import { CardButton } from '../components/styles/productCard/CardButton.styled'
+
+import { CardButton } from './styles/ProductCard/CardButton.styled'
+import { CardContainer } from './styles/ProductCard/CardContainer.styled'
+import { CardHeading } from './styles/ProductCard/CardHeading.styled'
+import { ImageContainer } from './styles/ImageContainer.styled'
 
 interface Props {
   product: ProductItem
