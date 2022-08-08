@@ -8,4 +8,7 @@ export const Main = styled.main`
     justify-content: flex-end;
     gap: 3rem;
   }
+  @media (min-width: 1200px) {
+    justify-content: center;
+  }
 `
