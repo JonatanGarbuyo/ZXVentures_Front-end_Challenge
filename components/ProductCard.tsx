@@ -10,19 +10,19 @@ import { CardButton } from './styles/productCard/CardButton.styled'
 
 interface Props {
   product: ProductItem
-  imageSize?: 'small'
+  imageSize?: 'small' | 'medium' | 'large'
 }
 
 export default function ProductCard({ product: p, imageSize }: Props) {
   const [src, setSrc] = useState(p.image_url)
 
-  const handleClick = (productId) => {
-    console.log(productId)
+  function handleClick(productId: string) {
+    console.log('productId: ', productId)
   }
 
   return (
     <CardContainer>
-      <a href="#">
+      <a href={`/product/${p.product_id}`}>
         <ImageContainer size={imageSize}>
           <Image
             src={src}
@@ -37,7 +37,7 @@ export default function ProductCard({ product: p, imageSize }: Props) {
       </a>
 
       <div>
-        <a href="#">
+        <a href={`/product/${p.product_id}`}>
           <CardHeading as="h2" color="var(--color-brand-gray)" size="1.5rem">
             {p.name}
           </CardHeading>
