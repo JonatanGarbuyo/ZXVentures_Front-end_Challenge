@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 import { ProductItem } from '../types'
 
-import { CardContainer } from 'components/styles/productCard/CardContainer.styled'
-import { ImageContainer } from 'components/styles/ImageContainer.styled'
-import { CardHeading } from 'components/styles/productCard/CardHeading.styled'
-import { CardButton } from 'components/styles/productCard/CardButton.styled'
+import { CardContainer } from './styles/productCard/CardContainer.styled'
+import { ImageContainer } from './styles/ImageContainer.styled'
+import { CardHeading } from './styles/productCard/CardHeading.styled'
+import { CardButton } from './styles/productCard/CardButton.styled'
 
 interface Props {
   product: ProductItem
