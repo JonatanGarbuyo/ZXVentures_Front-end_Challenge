@@ -141,7 +141,7 @@ export default function ProductPage() {
                 id="quantity"
                 name="quantity"
                 aria-label="quantity"
-                // value={quantity}
+                value={quantity}
                 onChange={handleOnChange}
               />
             </label>

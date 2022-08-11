@@ -9,5 +9,5 @@ export const StyledInput = styled.input`
   text-align: center;
   border: 1px solid var(--color-brand-white);
   font-size: 1.5rem;
-  color: #aaa;
+  color: var(--color-brand-black);
 `
