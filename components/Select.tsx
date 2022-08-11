@@ -5,7 +5,7 @@ import { CSSProperties } from 'styled-components'
 import { StyledSelect, SelectWrapper } from './styles/Select.styled'
 
 interface Props {
-  style: CSSProperties
+  style?: CSSProperties
   children: JSX.Element | JSX.Element[]
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void
 }
