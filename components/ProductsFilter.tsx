@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProductsFilter({ categories, onChange }: Props) {
   return (
-    <Select onChange={onChange}>
+    <Select onChange={onChange} style={{ margin: 'auto' }}>
       {categories.map((category) => (
         <Option key={category} value={category}>
           {category}

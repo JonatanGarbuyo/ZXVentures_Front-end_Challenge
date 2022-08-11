@@ -10,10 +10,6 @@ export const SelectWrapper = styled.div`
   @media (min-width: 768px) {
     max-width: 600px;
   }
-
-  @media (min-width: 1024px) {
-    margin-right: 0;
-  }
 `
 
 export const StyledSelect = styled.select`
