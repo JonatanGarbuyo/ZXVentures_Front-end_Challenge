@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 
-import Select from '../components/Select'
-import { Option } from '../components/styles/Select.styled'
+import Select from '@components/Select'
+import { Option } from '@components/styles/Select.styled'
 
 interface Props {
   categories: string[]
