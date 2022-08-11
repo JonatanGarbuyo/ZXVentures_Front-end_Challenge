@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Button } from '../Button.styled'
+import { Button } from './Button.styled'
 
 export const CardButton = styled(Button)`
   text-transform: uppercase;

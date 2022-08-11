@@ -517,7 +517,11 @@ const Index: NextPage = () => {
             // <SortBy>sort</SortBy>
             <ProductsList>
               {products.map((product) => (
-                <ProductCard key={product.product_id} product={product} />
+                <ProductCard
+                  key={product.product_id}
+                  product={product}
+                  imageSize="medium"
+                />
               ))}
             </ProductsList>
             // <Pagination />

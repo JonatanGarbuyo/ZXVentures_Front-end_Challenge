@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 
-import Select from '../components/Select'
-import { Option } from '../components/styles/Select.styled'
+import Select from '@components/Select'
+import { Option } from '@components/styles/Select.styled'
 
 interface Props {
   categories: string[]
@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProductsFilter({ categories, onChange }: Props) {
   return (
-    <Select onChange={onChange}>
+    <Select onChange={onChange} style={{ margin: 'auto' }}>
       {categories.map((category) => (
         <Option key={category} value={category}>
           {category}

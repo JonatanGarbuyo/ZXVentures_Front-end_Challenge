@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Heading } from '../Heading.styled'
+import { Heading } from './Heading.styled'
 
 export const CardHeading = styled(Heading)`
   color: ${(props) => props.color};
