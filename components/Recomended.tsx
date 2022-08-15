@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import ProductCard from './ProductCard'
 import { Heading } from './styles/Heading.styled'
 import { ProductsContent } from './styles/ProductsContent.styled'
-import { ProductsHeader } from './styles/ProductsHeader.styled'
 import { ProductsList } from './styles/ProductsList.styled'
 
 const RecomendedProductsList = styled(ProductsList)`
@@ -15,9 +14,7 @@ const RecomendedProductsList = styled(ProductsList)`
 export default function Recomended({ recomendedProducts = [] }) {
   return (
     <ProductsContent>
-      <ProductsHeader>
-        <Heading>Recomendados</Heading>
-      </ProductsHeader>
+      <Heading>Recomendados</Heading>
       <RecomendedProductsList>
         {recomendedProducts.map((product) => (
           <ProductCard

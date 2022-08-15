@@ -6,7 +6,6 @@ import ProductCard from '../components/ProductCard'
 import ProductsFilter from '../components/ProductsFilter'
 import { Heading } from '../components/styles/Heading.styled'
 import { ProductsContent } from '../components/styles/ProductsContent.styled'
-import { ProductsHeader } from '../components/styles/ProductsHeader.styled'
 import { ProductItem } from '../types'
 import { ProductsList } from '../components/styles/ProductsList.styled'
 import Recomended from '../components/Recomended'
@@ -506,9 +505,7 @@ const Index: NextPage = () => {
 
       <Main>
         <ProductsContent>
-          <ProductsHeader>
-            <Heading>Productos</Heading>
-          </ProductsHeader>
+          <Heading>Productos</Heading>
           <ProductsFilter
             categories={categories}
             onChange={handleSelectCategory}
@@ -527,6 +524,7 @@ const Index: NextPage = () => {
             // <Pagination />
           }
         </ProductsContent>
+
         <Recomended recomendedProducts={recomendedProducts} />
       </Main>
     </>
