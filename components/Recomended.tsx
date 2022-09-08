@@ -5,18 +5,24 @@ import { Heading } from './styles/Heading.styled'
 import { ProductsContent } from './styles/ProductsContent.styled'
 import { ProductsList } from './styles/ProductsList.styled'
 
+import { ProductItem } from 'types'
+
+interface props{
+  recomendedProducts: ProductItem[]
+}
+
 const RecomendedProductsList = styled(ProductsList)`
   @media (min-width: 1024px) {
     grid-template-columns: 220px;
   }
 `
 
-export default function Recomended({ recomendedProducts = [] }) {
+export default function Recomended({ recomendedProducts }: props) {
   return (
     <ProductsContent>
       <Heading>Recomendados</Heading>
       <RecomendedProductsList>
-        {recomendedProducts.map((product) => (
+        {recomendedProducts && recomendedProducts.map((product) => (
           <ProductCard
             key={product.product_id}
             product={product}

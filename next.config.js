@@ -8,7 +8,7 @@ const ContentSecurityPolicy = `
    default-src 'self';
    img-src 'self' data:;
    script-src 'self' 'unsafe-eval';
-   connect-src 'self' vitals.vercel-insights.com;
+   connect-src 'self' vitals.vercel-insights.com zxventures-api.herokuapp.com;
    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
    font-src 'self' https://fonts.gstatic.com;  
  `
