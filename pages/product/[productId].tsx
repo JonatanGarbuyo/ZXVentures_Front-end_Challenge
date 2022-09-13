@@ -7,20 +7,20 @@ import { CardHeading } from '../../components/styles/CardHeading.styled'
 import { Heading } from '../../components/styles/Heading.styled'
 import { ImageContainer } from '../../components/styles/ImageContainer.styled'
 import { ProductContainer } from '../../components/ProductContainer.styled'
-import Recomended from '../../components/Recomended'
+import Recommended from '../../components/Recommended'
 import { Main } from '../../components/styles/Main.styled'
 import { StyledInput } from '../../components/styles/Input.styled'
 
-import { getProductById, getRecomendedProducts } from 'service/products'
+import { getProductById, getRecommendedProducts } from 'service/products'
 import { ProductItem } from 'types'
 
 
 interface props{
   product: ProductItem, 
-  recomendedProducts: ProductItem[]
+  recommendedProducts: ProductItem[]
 }
 
-export default function ProductPage({ product, recomendedProducts }: props) {
+export default function ProductPage({ product, recommendedProducts }: props) {
   const [quantity, setQuantity] = useState('0')
   const router = useRouter()
   const { productId } = router.query
@@ -75,7 +75,7 @@ export default function ProductPage({ product, recomendedProducts }: props) {
           </form>
         </div>
       </ProductContainer>
-      <Recomended recomendedProducts={recomendedProducts} />
+      <Recommended recommendedProducts={recommendedProducts} />
     </Main>
   )
 }
@@ -93,12 +93,12 @@ export async function getServerSideProps(context) {
   }
 
   const product = await getProductById(productId)
-  const recomendedProducts = await getRecomendedProducts(productId)
+  const recommendedProducts = await getRecommendedProducts(productId)
 
   return {
     props: {
       product,
-      recomendedProducts,
+      recommendedProducts,
     },
   }
 }
