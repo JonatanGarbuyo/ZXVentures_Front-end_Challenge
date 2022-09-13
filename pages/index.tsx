@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -11,6 +11,8 @@ import { ProductsList } from '../components/styles/ProductsList.styled'
 import Recomended from '../components/Recomended'
 import { Main } from '../components/styles/Main.styled'
 
+import { getAllProducts, getProductsByCategory } from 'service/products'
+
 const categories = [
   'todos',
   'aguas',
@@ -20,35 +22,12 @@ const categories = [
   'mas vendidos',
 ]
 
-const Index: NextPage = () => {
-  const [products, setProducts] = useState<ProductItem[] | null>(null)
-  const [recomendedProducts, setRecomendedProducts] = useState<ProductItem[] | null>(null)
+interface props {
+  products: ProductItem[]
+  recomendedProducts: ProductItem[]
+}
 
-  async function getProductsByCategory(category: String) {
-    const response = await fetch(
-      `https://zxventures-api.herokuapp.com/products?categories_like=${category}`
-    )
-
-    return response.json() as Promise<ProductItem[]>
-  }
-
-  async function getAllProducts() {
-    const response = await fetch(
-      `https://zxventures-api.herokuapp.com/products`
-    ) 
-
-    return response.json() as Promise<ProductItem[]>
-  }
-
-  useEffect(() => {
-    try {
-       getAllProducts().then(setProducts)
-       getProductsByCategory('mas vendidos').then(setRecomendedProducts)
-      } catch (error) {
-        alert(error)        
-      }
-  }, [])
-
+const Index: NextPage = ({ products, recomendedProducts }: props) => {
   function handleSelectCategory(e: ChangeEvent<HTMLSelectElement>) {
     console.log(e.target.value)
   }
@@ -74,16 +53,17 @@ const Index: NextPage = () => {
           {
             // <SortBy>sort</SortBy>
           }
-            <ProductsList>
-              {products && products.map((product) => (
+          <ProductsList>
+            {products &&
+              products.map((product) => (
                 <ProductCard
                   key={product.product_id}
                   product={product}
                   imageSize="medium"
                 />
               ))}
-            </ProductsList>
-            {
+          </ProductsList>
+          {
             // <Pagination />
           }
         </ProductsContent>
@@ -95,3 +75,21 @@ const Index: NextPage = () => {
 }
 
 export default Index
+
+export async function getServerSideProps() {
+  const products = await getAllProducts()
+  const recomendedProducts = await getProductsByCategory('mas vendidos')
+
+  if (!products) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      products,
+      recomendedProducts,
+    },
+  }
+}
