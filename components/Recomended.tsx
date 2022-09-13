@@ -3,8 +3,13 @@ import styled from 'styled-components'
 import ProductCard from './ProductCard'
 import { Heading } from './styles/Heading.styled'
 import { ProductsContent } from './styles/ProductsContent.styled'
-import { ProductsHeader } from './styles/ProductsHeader.styled'
 import { ProductsList } from './styles/ProductsList.styled'
+
+import { ProductItem } from 'types'
+
+interface props{
+  recomendedProducts: ProductItem[]
+}
 
 const RecomendedProductsList = styled(ProductsList)`
   @media (min-width: 1024px) {
@@ -12,14 +17,12 @@ const RecomendedProductsList = styled(ProductsList)`
   }
 `
 
-export default function Recomended({ recomendedProducts = [] }) {
+export default function Recomended({ recomendedProducts }: props) {
   return (
     <ProductsContent>
-      <ProductsHeader>
-        <Heading>Recomendados</Heading>
-      </ProductsHeader>
+      <Heading>Recomendados</Heading>
       <RecomendedProductsList>
-        {recomendedProducts.map((product) => (
+        {recomendedProducts && recomendedProducts.map((product) => (
           <ProductCard
             key={product.product_id}
             product={product}
