@@ -19,7 +19,8 @@ export type ProductItem = {
 }
 
 export interface CartItem extends ProductItem {
-  amount: number
+  qty: number
+  subTotal: string
 }
 
 export interface CartState {
