@@ -85,7 +85,7 @@ export default function CartItemCard({ item, imageSize }: Props) {
           <p>Precio: {formatCurrency(parseFloat(item.total_price))}</p>
 
           <label style={{ fontSize: '1.5rem' }}>
-            Qty:
+            Cantidad:
             <StyledInput
               onWheelCapture={(e) => {
                 e.currentTarget.blur()

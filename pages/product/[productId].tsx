@@ -68,7 +68,7 @@ export default function ProductPage({ product, recommendedProducts }: props) {
 
           <form onSubmit={handleSubmit}>
             <label style={{ fontSize: '1.5rem' }}>
-              Qty:
+              Cantidad:
               <StyledInput
                 min={1}
                 max={100}
