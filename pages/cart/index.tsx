@@ -21,7 +21,7 @@ export default function CartComponent({ recommendedProducts }: props) {
 
   return (
     <Main>
-      <div>
+      <div style={{width:"100%"}}>
         {cartItems.length ? cartItems.map((item) => (
           <CartItemCard item={item} key={item.product_id} imageSize="medium" />
         )):
