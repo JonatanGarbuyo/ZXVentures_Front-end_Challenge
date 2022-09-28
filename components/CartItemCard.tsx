@@ -21,6 +21,7 @@ interface Props {
 
 const CartItemContainer = styled(ProductContainer)`
   border-bottom: 1px solid var(--color-brand-white);
+  position: relative;
 
   @media (min-width: 479px) {
     grid-template-columns: auto 1fr;
@@ -28,13 +29,21 @@ const CartItemContainer = styled(ProductContainer)`
   }
 `
 
+const DescriptionContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`
+
 export default function CartItemCard({ item, imageSize }: Props) {
   const [src, setSrc] = useState(item.image_url)
-  const {changeQty, removeItem} = useContext(ShoppingCartContext)
+  const { changeQty, removeItem } = useContext(ShoppingCartContext)
 
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
     const qty = e.target.value
-    
+
     if (parseInt(qty) > 100) {
       alert('100 items max')
 
@@ -67,19 +76,18 @@ export default function CartItemCard({ item, imageSize }: Props) {
         </ImageContainer>
       </div>
 
-      <div style={{ width: '100%' }}>
-        <Button onClick={()=>removeItem(item.product_id)}>X</Button>
+      <DescriptionContainer style={{ width: '100%' }}>
+        <Button  style={{ position: "absolute", top: 0, right:10}} onClick={() => removeItem(item.product_id)}>X</Button>
         <CardHeading as="h2" color="var(--color-brand-gray)" size="1.5rem">
           {item.name}
         </CardHeading>
-
         <PriceContainer>
           <p>Precio: {formatCurrency(parseFloat(item.total_price))}</p>
 
           <label style={{ fontSize: '1.5rem' }}>
             Qty:
             <StyledInput
-              onWheelCapture={e => {
+              onWheelCapture={(e) => {
                 e.currentTarget.blur()
               }}
               min={1}
@@ -96,11 +104,11 @@ export default function CartItemCard({ item, imageSize }: Props) {
           <p>
             Subtotal:{' '}
             <span>
-              {formatCurrency(parseFloat(item.total_price) * item.qty )}
+              {formatCurrency(parseFloat(item.total_price) * item.qty)}
             </span>
           </p>
         </PriceContainer>
-      </div>
+      </DescriptionContainer>
     </CartItemContainer>
   )
 }
