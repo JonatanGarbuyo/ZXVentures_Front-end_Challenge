@@ -7,6 +7,7 @@ interface CartContextProps {
   addItem: (item: ProductItem) => void
   removeItem: (itemId:string) => void
   changeQty: (item: CartItem, qty: string) => void
+  incrementQty: (item: CartItem, qty: string) => void
 }
 
 const ShoppingCartContext = createContext<CartContextProps>({} as CartContextProps)

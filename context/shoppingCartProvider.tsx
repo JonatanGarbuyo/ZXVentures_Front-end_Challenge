@@ -29,8 +29,13 @@ export default function ShoppingCartProvider({ children }: props) {
     dispatch({type: "changeQty", payload:{item, qty} })
   }
 
+  function incrementQty(item: CartItem, qty: string){
+    dispatch({type: "incrementQty", payload:{item, qty} })
+  }
+
+  
   return (
-    <ShoppingCartContext.Provider value={{ cartState, addItem, removeItem, changeQty }}>
+    <ShoppingCartContext.Provider value={{ cartState, addItem, removeItem, changeQty, incrementQty }}>
       {children}
     </ShoppingCartContext.Provider>
   )

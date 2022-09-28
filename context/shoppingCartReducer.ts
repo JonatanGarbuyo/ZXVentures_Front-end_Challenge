@@ -4,6 +4,7 @@ type CartAction =
   | { type: 'addItem'; payload: CartItem }
   | { type: 'removeItem'; payload: { id: string } }
   | { type: 'changeQty'; payload: { item: CartItem; qty: string } }
+  | { type: 'incrementQty'; payload: { item: CartItem; qty: string } }
 
 export default function shoppingCartReducer(
   state: CartState,
@@ -16,6 +17,9 @@ export default function shoppingCartReducer(
       return removeItem(state, action.payload.id)
     case 'changeQty':
       return changeQty(state, action.payload.item, action.payload.qty)
+    case 'incrementQty':
+      return incrementQty(state, action.payload.item, action.payload.qty)
+
     default:
       return state
   }
@@ -71,6 +75,29 @@ function changeQty(state: CartState, item: CartItem, qty: string): CartState {
     cartItems = state.cartItems.map((cartItem) => {
       if (cartItem.product_id === item.product_id) {
         return { ...cartItem, qty: parseInt(qty) }
+      }
+
+      return cartItem
+    })
+  }
+
+  return { cartItems, totalPrice: getTotalPrice(cartItems) }
+}
+
+function incrementQty(
+  state: CartState,
+  item: CartItem,
+  qty: string
+): CartState {
+  let cartItems: CartItem[]
+  const index = state.cartItems.findIndex(
+    (cartItem) => cartItem.product_id === item.product_id
+  )
+
+  if (index >= 0) {
+    cartItems = state.cartItems.map((cartItem) => {
+      if (cartItem.product_id === item.product_id) {
+        return { ...cartItem, qty: cartItem.qty + parseInt(qty) }
       }
 
       return cartItem
