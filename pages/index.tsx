@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
@@ -28,8 +28,13 @@ interface props {
 }
 
 const Index: NextPage = ({ products, recommendedProducts }: props) => {
+  const [displayProducts, setDisplayProducts] = useState(products)
+
   function handleSelectCategory(e: ChangeEvent<HTMLSelectElement>) {
-    console.log(e.target.value)
+    const selectedCategory = e.target.value
+
+    selectedCategory === 'todos' ? setDisplayProducts(products) :
+    setDisplayProducts(products.filter(product => product.categories?.some(category=> category === selectedCategory)))
   }
 
   return (
@@ -50,12 +55,9 @@ const Index: NextPage = ({ products, recommendedProducts }: props) => {
             categories={categories}
             onChange={handleSelectCategory}
           />
-          {
-            // <SortBy>sort</SortBy>
-          }
           <ProductsList>
-            {products &&
-              products.map((product) => (
+            {displayProducts &&
+              displayProducts.map((product) => (
                 <ProductCard
                   key={product.product_id}
                   product={product}
@@ -63,9 +65,6 @@ const Index: NextPage = ({ products, recommendedProducts }: props) => {
                 />
               ))}
           </ProductsList>
-          {
-            // <Pagination />
-          }
         </ProductsContent>
 
         <Recommended recommendedProducts={recommendedProducts} />
