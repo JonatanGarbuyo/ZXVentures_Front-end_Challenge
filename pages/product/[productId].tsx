@@ -1,6 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useContext, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 
 import { CardButton } from '../../components/styles/CardButton.styled'
 import { CardHeading } from '../../components/styles/CardHeading.styled'
@@ -12,7 +11,8 @@ import { Main } from '../../components/styles/Main.styled'
 import { StyledInput } from '../../components/styles/Input.styled'
 
 import { getProductById, getRecommendedProducts } from 'service/products'
-import { ProductItem } from 'types'
+import { CartItem, ProductItem } from 'types'
+import ShoppingCartContext from 'context/shoppingCartContext'
 
 
 interface props{
@@ -21,18 +21,27 @@ interface props{
 }
 
 export default function ProductPage({ product, recommendedProducts }: props) {
-  const [quantity, setQuantity] = useState('0')
-  const router = useRouter()
-  const { productId } = router.query
+  const { incrementQty } = useContext(ShoppingCartContext)
+  const [quantity, setQuantity] = useState('1')
 
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
-    setQuantity(e.target.value)
+    const qty = e.target.value
+    
+    if (parseInt(qty) > 100) {
+      alert('100 items max')
+
+      return
+    }
+    if (!qty || parseInt(qty) < 0) return
+
+    setQuantity(qty)
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     // validate()
-    console.log(`${productId}: ${quantity}`)
+
+    incrementQty(product as CartItem, quantity)
   }
 
   return (
