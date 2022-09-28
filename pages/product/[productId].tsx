@@ -1,38 +1,47 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useContext, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 
 import { CardButton } from '../../components/styles/CardButton.styled'
 import { CardHeading } from '../../components/styles/CardHeading.styled'
 import { Heading } from '../../components/styles/Heading.styled'
 import { ImageContainer } from '../../components/styles/ImageContainer.styled'
 import { ProductContainer } from '../../components/ProductContainer.styled'
-import Recomended from '../../components/Recomended'
+import Recommended from '../../components/Recommended'
 import { Main } from '../../components/styles/Main.styled'
 import { StyledInput } from '../../components/styles/Input.styled'
 
-import { getProductById, getRecomendedProducts } from 'service/products'
-import { ProductItem } from 'types'
+import { getProductById, getRecommendedProducts } from 'service/products'
+import { CartItem, ProductItem } from 'types'
+import ShoppingCartContext from 'context/shoppingCartContext'
 
 
 interface props{
   product: ProductItem, 
-  recomendedProducts: ProductItem[]
+  recommendedProducts: ProductItem[]
 }
 
-export default function ProductPage({ product, recomendedProducts }: props) {
-  const [quantity, setQuantity] = useState('0')
-  const router = useRouter()
-  const { productId } = router.query
+export default function ProductPage({ product, recommendedProducts }: props) {
+  const { incrementQty } = useContext(ShoppingCartContext)
+  const [quantity, setQuantity] = useState('1')
 
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
-    setQuantity(e.target.value)
+    const qty = e.target.value
+    
+    if (parseInt(qty) > 100) {
+      alert('100 items max')
+
+      return
+    }
+    if (!qty || parseInt(qty) < 0) return
+
+    setQuantity(qty)
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     // validate()
-    console.log(`${productId}: ${quantity}`)
+
+    incrementQty(product as CartItem, quantity)
   }
 
   return (
@@ -75,7 +84,7 @@ export default function ProductPage({ product, recomendedProducts }: props) {
           </form>
         </div>
       </ProductContainer>
-      <Recomended recomendedProducts={recomendedProducts} />
+      <Recommended recommendedProducts={recommendedProducts} />
     </Main>
   )
 }
@@ -93,12 +102,12 @@ export async function getServerSideProps(context) {
   }
 
   const product = await getProductById(productId)
-  const recomendedProducts = await getRecomendedProducts(productId)
+  const recommendedProducts = await getRecommendedProducts(productId)
 
   return {
     props: {
       product,
-      recomendedProducts,
+      recommendedProducts,
     },
   }
 }

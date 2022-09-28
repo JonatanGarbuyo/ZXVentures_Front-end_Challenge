@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -14,10 +14,14 @@ import { Option } from './styles/Select.styled'
 import Select from './Select'
 import { CartButton } from './styles/CartButton.styled'
 
+import ShoppingCartContext from 'context/shoppingCartContext'
+
 export default function Header() {
+  const {cartState: {cartItems}} = useContext(ShoppingCartContext)
   const router = useRouter()
 
   function handleSelect(e: ChangeEvent<HTMLSelectElement>) {
+    // eslint-disable-next-line no-console
     console.log(e.target.value)
   }
 
@@ -47,12 +51,13 @@ export default function Header() {
         <div>
           <CartButtonContainer>
             <CartButton
+            onClick={handleClick}
               width="100%"
               color="white"
               aria-label="My cart button"
-              onMouseUp={handleClick}
+              // onMouseUp={handleClick}
             >
-              My carrito: {3} item(s)
+              My carrito: {cartItems.length} item(s)
             </CartButton>
           </CartButtonContainer>
 

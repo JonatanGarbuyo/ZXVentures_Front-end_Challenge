@@ -1,19 +1,21 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 
-import { ProductItem } from '../types'
+import { CartItem } from '../types'
 
 import { ProductContainer } from './ProductContainer.styled'
 import { ImageContainer } from './styles/ImageContainer.styled'
 import { CardHeading } from './styles/CardHeading.styled'
 import { PriceContainer } from './styles/PriceContainer.styled'
 import { StyledInput } from './styles/Input.styled'
+import { Button } from './styles/Button.styled'
 
 import { formatCurrency } from 'utils/helperFunctions'
+import ShoppingCartContext from 'context/shoppingCartContext'
 
 interface Props {
-  item: ProductItem
+  item: CartItem
   imageSize?: 'small' | 'medium' | 'large'
 }
 
@@ -28,26 +30,24 @@ const CartItemContainer = styled(ProductContainer)`
 
 export default function CartItemCard({ item, imageSize }: Props) {
   const [src, setSrc] = useState(item.image_url)
-  const [quantity, setQuantity] = useState('1')
+  const {changeQty, removeItem} = useContext(ShoppingCartContext)
 
   function handleOnChange(e: ChangeEvent<HTMLInputElement>) {
-    console.log('event:', e)
     const qty = e.target.value
-
+    
     if (parseInt(qty) > 100) {
-      setQuantity('100')
       alert('100 items max')
 
       return
     }
 
     if (!qty || parseInt(qty) < 0) {
-      setQuantity('0')
+      changeQty(item, '0')
 
       return
     }
 
-    setQuantity(e.target.value)
+    changeQty(item, qty)
   }
 
   return (
@@ -68,6 +68,7 @@ export default function CartItemCard({ item, imageSize }: Props) {
       </div>
 
       <div style={{ width: '100%' }}>
+        <Button onClick={()=>removeItem(item.product_id)}>X</Button>
         <CardHeading as="h2" color="var(--color-brand-gray)" size="1.5rem">
           {item.name}
         </CardHeading>
@@ -78,13 +79,16 @@ export default function CartItemCard({ item, imageSize }: Props) {
           <label style={{ fontSize: '1.5rem' }}>
             Qty:
             <StyledInput
+              onWheelCapture={e => {
+                e.currentTarget.blur()
+              }}
               min={1}
               max={100}
               type="number"
               id="quantity"
               name="quantity"
               aria-label="quantity"
-              value={quantity}
+              value={item.qty}
               onChange={handleOnChange}
               onBlur={handleOnChange}
             />
@@ -92,9 +96,7 @@ export default function CartItemCard({ item, imageSize }: Props) {
           <p>
             Subtotal:{' '}
             <span>
-              {formatCurrency(
-                parseFloat(item.total_price) * parseFloat(quantity)
-              )}
+              {formatCurrency(parseFloat(item.total_price) * item.qty )}
             </span>
           </p>
         </PriceContainer>

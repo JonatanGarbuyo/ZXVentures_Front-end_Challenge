@@ -17,3 +17,13 @@ export type ProductItem = {
   size: number
   price_per_litre: string
 }
+
+export interface CartItem extends ProductItem {
+  qty: number
+  subTotal: string
+}
+
+export interface CartState {
+  cartItems: CartItem[]
+  totalPrice: number
+}

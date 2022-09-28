@@ -8,7 +8,7 @@ import { Heading } from '../components/styles/Heading.styled'
 import { ProductsContent } from '../components/styles/ProductsContent.styled'
 import { ProductItem } from '../types'
 import { ProductsList } from '../components/styles/ProductsList.styled'
-import Recomended from '../components/Recomended'
+import Recommended from '../components/Recommended'
 import { Main } from '../components/styles/Main.styled'
 
 import { getAllProducts, getProductsByCategory } from 'service/products'
@@ -24,10 +24,10 @@ const categories = [
 
 interface props {
   products: ProductItem[]
-  recomendedProducts: ProductItem[]
+  recommendedProducts: ProductItem[]
 }
 
-const Index: NextPage = ({ products, recomendedProducts }: props) => {
+const Index: NextPage = ({ products, recommendedProducts }: props) => {
   function handleSelectCategory(e: ChangeEvent<HTMLSelectElement>) {
     console.log(e.target.value)
   }
@@ -68,7 +68,7 @@ const Index: NextPage = ({ products, recomendedProducts }: props) => {
           }
         </ProductsContent>
 
-        <Recomended recomendedProducts={recomendedProducts} />
+        <Recommended recommendedProducts={recommendedProducts} />
       </Main>
     </>
   )
@@ -78,7 +78,7 @@ export default Index
 
 export async function getServerSideProps() {
   const products = await getAllProducts()
-  const recomendedProducts = await getProductsByCategory('mas vendidos')
+  const recommendedProducts = await getProductsByCategory('mas vendidos')
 
   if (!products) {
     return {
@@ -89,7 +89,7 @@ export async function getServerSideProps() {
   return {
     props: {
       products,
-      recomendedProducts,
+      recommendedProducts,
     },
   }
 }
